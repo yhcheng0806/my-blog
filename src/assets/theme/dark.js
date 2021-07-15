@@ -1,4 +1,4 @@
 export const dark = {
-  bgColor: "#0D083B",
+  bgColor: "#000",
   textColor: "#fff",
 };

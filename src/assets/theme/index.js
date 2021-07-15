@@ -3,4 +3,4 @@ import { light } from "./light";
 
 const colors = { dark, light };
 
-export const modifyTheme = (themeType = "dark") => colors[themeType];
+export const modifyTheme = (themeType = "light") => colors[themeType];
