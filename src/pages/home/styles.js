@@ -122,7 +122,7 @@ export const Tabs = styled.div`
   border-bottom: 2px solid ${props => props.theme.t_twitter};
 
   &:hover {
-    background: ${props => props.theme.t_twitter_dark_hover};;
+    background: ${props => props.theme.t_twitter_dark_hover};
   }
 `;
 

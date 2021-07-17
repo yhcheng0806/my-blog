@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, useHistory  } from "react-router-dom";
 
 import Icon from "../common/Icon";
 
@@ -18,10 +18,10 @@ import {
   Status
 } from "./styles";
 
-const Main = ({ setTheme }) => {
+const Main = ({ setTheme  }) => {
   const [themeState, setThemeState] = useState("dark");
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleTheme = () => {
     setThemeState(themeState === "light" ? "dark" : "light");
@@ -29,9 +29,8 @@ const Main = ({ setTheme }) => {
     setTheme(modifyTheme(themeState === "light" ? "dark" : "light"));
   };
 
-  const toPage = (page) => {
-    return
-    history.push('/'+page)
+  const toPage = ( page) => {
+    console.log(history,page,'---page---')
   }
 
   return (
@@ -39,10 +38,6 @@ const Main = ({ setTheme }) => {
       <Header>
         <LeftWrapper>
           <Icon type='icon-logo' />
-          {/* <ProfileInfo>
-            <strong>name</strong>
-            <span>99 news</span>
-          </ProfileInfo> */}
         </LeftWrapper>
         <Theme outlined onClick={handleTheme}>
           <Icon type={`icon-${themeState}`} />

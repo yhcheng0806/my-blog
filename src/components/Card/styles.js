@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   padding: 14px 16px;
 
-  border-bottom: 1px solid ${props => props.theme.t_outline};;
+  border-bottom: 1px solid ${props => props.theme.t_outline};
 
   max-width: 100%;
 `;
@@ -82,7 +82,7 @@ export const Header = styled.div`
 `;
 
 export const Dot = styled.div`
-  background: v${props => props.theme.t_gray};
+  background: ${props => props.theme.t_gray};
   width: 2px;
   height: 2px;
   margin: 0 10px;
@@ -98,7 +98,7 @@ export const ImageContent = styled.div`
   width: 100%;
   height: min(285px, max(175px, 41vw));
 
-  background: ${props => props.theme.t_outline};;
+  background: ${props => props.theme.t_outline};
   border-radius: 14px;
 
   cursor: pointer;

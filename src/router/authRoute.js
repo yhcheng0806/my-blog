@@ -14,6 +14,7 @@ const AuthRoute = () => {
     <>
       <Route path="/:page" component={PageRenderer} />
       <Route
+        exact
         path="/"
         render={() => <Redirect to={userInfo ? "home" : "login"} />}
       />
