@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouteMatch } from "react-router-dom";
 
-const component = (page) => require(`../pages/${page}`).default;
+const component = (page) => require(`../pages/${page}/index`).default;
 
 const generatePage = (page) => {
   try {

@@ -5,6 +5,8 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing:border-box;
+
+    color: ${(props) => props.theme.t_textColor};
   }
   html, body, #root {
     max-width: 100vw;
@@ -24,8 +26,8 @@ export default createGlobalStyle`
   ul,li {
     list-style: none;
   }
-  html {
-    /* background: var(--primary); */
+  body {
+    background:  ${(props) => props.theme.t_appBgColor};
   }
   
 `;

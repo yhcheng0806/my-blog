@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, useHistory } from "react-router-dom";
 
 import Icon from "../common/Icon";
 
@@ -14,13 +14,14 @@ import {
   LeftWrapper,
   Theme,
   Pages,
-  ProfileInfo,
   BottomMenu,
+  Status
 } from "./styles";
 
 const Main = ({ setTheme }) => {
-  const [themeState, setThemeState] = useState("light");
+  const [themeState, setThemeState] = useState("dark");
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const handleTheme = () => {
     setThemeState(themeState === "light" ? "dark" : "light");
@@ -28,12 +29,16 @@ const Main = ({ setTheme }) => {
     setTheme(modifyTheme(themeState === "light" ? "dark" : "light"));
   };
 
+  const toPage = (page) => {
+    return
+    history.push('/'+page)
+  }
+
   return (
     <Container>
       <Header>
         <LeftWrapper>
-          <button></button>
-
+          <Icon type='icon-logo' />
           {/* <ProfileInfo>
             <strong>name</strong>
             <span>99 news</span>
@@ -52,7 +57,20 @@ const Main = ({ setTheme }) => {
         </Router>
       </Pages>
 
-      <BottomMenu></BottomMenu>
+      <BottomMenu>
+        <Status onClick={() => toPage('home')}>
+          <Icon type='icon-home' />
+        </Status>
+        <Status onClick={() => toPage('search')}>
+          <Icon type='icon-search' />
+        </Status>
+        <Status onClick={() => toPage('email')}>
+          <Icon type='icon-email' />
+        </Status>
+        <Status onClick={() => toPage('user')}>
+          <Icon type='icon-user' />
+        </Status>
+      </BottomMenu>
     </Container>
   );
 };

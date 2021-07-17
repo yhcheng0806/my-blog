@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+// import { useSelector } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout";
@@ -11,7 +11,7 @@ import "antd/dist/antd.css";
 
 const App = () => {
   // const [theme, setTheme] = useState(useSelector((state) => state.theme));
-  const [theme, setTheme] = useState(modifyTheme());
+  const [theme, setTheme] = useState(modifyTheme("dark"));
 
   return (
     <ThemeProvider theme={theme}>

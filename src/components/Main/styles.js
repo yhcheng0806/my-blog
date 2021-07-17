@@ -1,12 +1,5 @@
-import styled, { css } from "styled-components";
-// import Button from "../common/Button";
-// import {
-//   ArrowLeft,
-//   Home,
-//   Search,
-//   Notifications,
-//   Email,
-// } from "../../styles/icons";
+import styled from "styled-components";
+
 
 export const Container = styled.div`
   display: flex;
@@ -14,8 +7,8 @@ export const Container = styled.div`
   width: min(601px, 100%);
 
   @media (min-width: 500px) {
-    /* border-left: 1px solid var(--outline); */
-    /* border-right: 1px solid var(--outline); */
+    border-left: 1px solid ${(props) => props.theme.t_outline};
+    border-right: 1px solid ${(props) => props.theme.t_outline};
   }
 `;
 
@@ -23,14 +16,14 @@ export const Header = styled.div`
   z-index: 2;
   position: sticky;
   top: 0;
-  /* background: var(--primary); */
+  background: ${(props) => props.theme.t_appBgColor};
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: left;
   padding: 8px 13px 9px 13px;
-  /* border-bottom: 1px solid var(--outline); */
+  border-bottom: 1px solid ${props => props.theme.t_outline};
 
   > button {
     padding: 8px;
@@ -42,11 +35,13 @@ export const Header = styled.div`
   }
 `;
 
-export const Pages = styled.div``;
-
 export const LeftWrapper = styled.div`
   display: flex;
   align-items: center;
+  span {
+    font-size: 22px;
+    color: ${(props) => props.theme.textColor};
+  }
 `;
 
 export const Theme = styled.div`
@@ -56,18 +51,17 @@ export const Theme = styled.div`
   }
 `;
 
-export const ProfileInfo = styled.div`
-  margin-left: 17px;
-  display: flex;
-  flex-direction: column;
+export const Pages = styled.div`
+  // display: flex;
+  // flex-direction: column;
 
-  > strong {
-    font-size: 19px;
-  }
-  > span {
-    font-size: 15px;
-    /* color: var(--gray); */
-  }
+  // max-height: 100%;
+  // overflow-y: auto;
+
+  // scrollbar-width: none; /** Firefox */
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
 `;
 
 export const BottomMenu = styled.div`
@@ -76,8 +70,8 @@ export const BottomMenu = styled.div`
   left: 0;
   z-index: 2;
   width: 100%;
-  /* background: var(--primary); */
-  /* border-top: 1px solid var(--outline); */
+  background: ${props => props.theme.t_appBgColor};
+  border-top:1px solid ${props => props.theme.t_outline};
   display: flex;
   justify-content: space-between;
   padding: 8px min(46px, max(10vw, 10px));
@@ -85,33 +79,20 @@ export const BottomMenu = styled.div`
   @media (min-width: 500px) {
     display: none;
   }
+  
 `;
-
-export const iconCss = css`
-  width: 31px;
-  height: 31px;
-
-  cursor: pointer;
-  /* fill: var(--gray); */
-
-  &:hover,
-  &.active {
-    /* fill: var(--twitter); */
+export const Status = styled.div`
+  span {
+    font-size:24px;
+    cursor: pointer;
+    svg {
+      fill:${props => props.theme.t_textColor}
+    }
   }
+  &:hover,
+    &.active {
+      svg {
+        fill:${props => props.theme.t_twitter}
+      }
+    }
 `;
-
-// export const HomeIcon = styled(Home)`
-//   ${iconCss}
-// `;
-
-// export const SearchIcon = styled(Search)`
-//   ${iconCss}
-// `;
-
-// export const BellIcon = styled(Notifications)`
-//   ${iconCss}
-// `;
-
-// export const EmailIcon = styled(Email)`
-//   ${iconCss}
-// `;
