@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, useHistory  } from "react-router-dom";
+import { Switch, useHistory  } from "react-router-dom";
 
 import Icon from "../common/Icon";
 
@@ -19,18 +19,21 @@ import {
 } from "./styles";
 
 const Main = ({ setTheme  }) => {
-  const [themeState, setThemeState] = useState("dark");
+  const [themeState, setThemeState] = useState(localStorage.getItem("themeState") || "light");
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleTheme = () => {
-    setThemeState(themeState === "light" ? "dark" : "light");
-    dispatch(modifyThemeType(themeState === "light" ? "dark" : "light"));
-    setTheme(modifyTheme(themeState === "light" ? "dark" : "light"));
+    const state = themeState === "light" ? "dark" : "light"
+    setThemeState(state);
+    dispatch(modifyThemeType(state));
+    setTheme(modifyTheme(state));
+    localStorage.setItem("themeState",state)
   };
 
   const toPage = ( page) => {
     console.log(history,page,'---page---')
+    history.push('/' + page)
   }
 
   return (
@@ -45,11 +48,9 @@ const Main = ({ setTheme  }) => {
       </Header>
 
       <Pages>
-        <Router>
           <Switch>
             <AuthRoute />
           </Switch>
-        </Router>
       </Pages>
 
       <BottomMenu>

@@ -36,7 +36,7 @@ const Card = () => {
 
           <Icons>
             <Status>
-              <Icon type="icon-Chat" />
+              <Icon type="icon-chat" />
               0
             </Status>
             <Status>

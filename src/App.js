@@ -11,7 +11,7 @@ import "antd/dist/antd.css";
 
 const App = () => {
   // const [theme, setTheme] = useState(useSelector((state) => state.theme));
-  const [theme, setTheme] = useState(modifyTheme("dark"));
+  const [theme, setTheme] = useState(modifyTheme(localStorage.getItem("themeState") || "light"));
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,8 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const User = () => {
+  const history = useHistory()
+
   return (
-    <div>
+    <div onClick={()=>{
+      history.push('/')
+    }}>
       user
     </div>
   );

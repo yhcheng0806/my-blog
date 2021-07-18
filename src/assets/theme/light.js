@@ -3,7 +3,7 @@ export const light = {
   t_textColor:"#000",
   t_primary: "#fff",
   t_secondary: "#15181C",
-  t_search: "#202327",
+  t_search: "#f1f1f1",
   t_white: "#D9D9D9",
   t_gray: "#7A7A7A",
   t_outline: "#f3f3f3",
