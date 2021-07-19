@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -7,7 +6,7 @@ export const Container = styled.div`
 
   padding: 14px 16px;
 
-  border-bottom: 1px solid ${props => props.theme.t_outline};
+  border-bottom: 1px solid ${(props) => props.theme.t_outline};
 
   max-width: 100%;
 `;
@@ -17,7 +16,7 @@ export const Retweeted = styled.div`
   align-items: center;
 
   font-size: 13px;
-  color: v${props => props.theme.t_gray};
+  color: v ${(props) => props.theme.t_gray};
 `;
 export const RocketseatIcon = styled.div`
   width: 16px;
@@ -27,7 +26,7 @@ export const RocketseatIcon = styled.div`
   margin-right: 9px;
 
   > path {
-    fill: v${props => props.theme.t_gray};
+    fill: v ${(props) => props.theme.t_gray};
   }
 `;
 
@@ -43,7 +42,7 @@ export const Avatar = styled.div`
   height: 49px;
   border-radius: 50%;
   flex-shrink: 0;
-  background: ${props => props.theme.t_gray};
+  background: ${(props) => props.theme.t_gray};
 
   position: absolute;
   top: 0;
@@ -70,7 +69,7 @@ export const Header = styled.div`
 
   > span,
   time {
-    color: v${props => props.theme.t_gray};
+    color: v ${(props) => props.theme.t_gray};
   }
 
   > strong,
@@ -82,7 +81,7 @@ export const Header = styled.div`
 `;
 
 export const Dot = styled.div`
-  background: ${props => props.theme.t_gray};
+  background: ${(props) => props.theme.t_gray};
   width: 2px;
   height: 2px;
   margin: 0 10px;
@@ -98,7 +97,7 @@ export const ImageContent = styled.div`
   width: 100%;
   height: min(285px, max(175px, 41vw));
 
-  background: ${props => props.theme.t_outline};
+  background: ${(props) => props.theme.t_outline};
   border-radius: 14px;
 
   cursor: pointer;
@@ -131,12 +130,12 @@ export const Status = styled.div`
   align-items: center;
 
   font-size: 16px;
-  color: ${props => props.theme.t_textColor};
-  >span {
+  color: ${(props) => props.theme.t_textColor};
+  > span {
     margin-right: 5px;
   }
   svg {
-    fill: ${props => props.theme.t_textColor};
+    fill: ${(props) => props.theme.t_textColor};
   }
 `;
 

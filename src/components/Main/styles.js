@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,16 +22,7 @@ export const Header = styled.div`
   justify-content: space-between;
   text-align: left;
   padding: 8px 13px 9px 13px;
-  border-bottom: 1px solid ${props => props.theme.t_outline};
-
-  > button {
-    padding: 8px;
-    border-radius: 50%;
-
-    &:hover {
-      /* background: var(--twitter-dark-hover); */
-    }
-  }
+  border-bottom: 1px solid ${(props) => props.theme.t_outline};
 `;
 
 export const LeftWrapper = styled.div`
@@ -52,16 +42,8 @@ export const Theme = styled.div`
 `;
 
 export const Pages = styled.div`
-  // display: flex;
-  // flex-direction: column;
-
-  // max-height: 100%;
-  // overflow-y: auto;
-
-  // scrollbar-width: none; /** Firefox */
-  // ::-webkit-scrollbar {
-  //   display: none;
-  // }
+  height: 100%;
+  padding-bottom: 40px;
 `;
 
 export const BottomMenu = styled.div`
@@ -70,8 +52,8 @@ export const BottomMenu = styled.div`
   left: 0;
   z-index: 2;
   width: 100%;
-  background: ${props => props.theme.t_appBgColor};
-  border-top:1px solid ${props => props.theme.t_outline};
+  background: ${(props) => props.theme.t_appBgColor};
+  border-top: 1px solid ${(props) => props.theme.t_outline};
   display: flex;
   justify-content: space-between;
   padding: 8px min(46px, max(10vw, 10px));
@@ -79,20 +61,19 @@ export const BottomMenu = styled.div`
   @media (min-width: 500px) {
     display: none;
   }
-  
 `;
 export const Status = styled.div`
   span {
-    font-size:24px;
+    font-size: 24px;
     cursor: pointer;
     svg {
-      fill:${props => props.theme.t_textColor}
+      fill: ${(props) => props.theme.t_textColor};
     }
   }
   &:hover,
-    &.active {
-      svg {
-        fill:${props => props.theme.t_twitter}
-      }
+  &.active {
+    svg {
+      fill: ${(props) => props.theme.t_blue};
     }
+  }
 `;

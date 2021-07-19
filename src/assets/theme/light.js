@@ -1,6 +1,6 @@
 export const light = {
-  t_appBgColor:"#fff",
-  t_textColor:"#000",
+  t_appBgColor: "#fff",
+  t_textColor: "#000",
   t_primary: "#fff",
   t_secondary: "#15181C",
   t_search: "#f1f1f1",
@@ -9,7 +9,6 @@ export const light = {
   t_outline: "#f3f3f3",
   t_retweet: "#00C06B",
   t_like: "#E8265E",
-  t_twitter: "#33A1F2",
-  t_twitter_dark_hover: "#011017",
-  t_twitter_light_hover: "#2C8ED6",
-}
+  t_blue: "#33A1F2",
+  t_blueHover: "#fff",
+};

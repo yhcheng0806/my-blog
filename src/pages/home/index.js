@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from '../../components/common/Icon'
-import Card from '../../components/Card'
+import Icon from "../../components/common/Icon";
+import Card from "../../components/Card";
 
 import {
   Container,
@@ -11,13 +11,12 @@ import {
   General,
   Main,
   Tabs,
-  ArticleList
-} from "./styles"
+  ArticleList,
+} from "./styles";
 
 const Home = () => {
-
   return (
-    <Container >
+    <Container>
       <Banner>
         <Avatar></Avatar>
       </Banner>
@@ -30,27 +29,27 @@ const Home = () => {
 
         <ul>
           <li>
-            <Icon type='icon-location' />shanXi xi'an
+            <Icon type="icon-location" />
+            陕西 西安
           </li>
           <li>
-            <Icon type='icon-cake' />1995-11-28
+            <Icon type="icon-cake" />
+            1995-11-28
           </li>
         </ul>
 
         <General>
           <span>
-            articles<strong>0</strong>
+            内容<strong>0</strong>
           </span>
           <span>
-            likes<strong>0</strong>
+            点赞<strong>0</strong>
           </span>
         </General>
       </ProfileData>
 
       <Main>
-        <Tabs>
-          article
-        </Tabs>
+        <Tabs>内容</Tabs>
         <ArticleList>
           <Card />
           <Card />

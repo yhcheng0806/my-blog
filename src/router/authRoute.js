@@ -1,14 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import PageRenderer from "./pageRenderer";
 
 const AuthRoute = () => {
-  // const userInfo =
-  //   useSelector((state) => state.auth.authData) ||
-  //   JSON.parse(localStorage.getItem("userInfo"));
-  const userInfo = true;
+  const authData =
+    useSelector((state) => state.auth.authData) ||
+    JSON.parse(localStorage.getItem("authData"));
 
   return (
     <>
@@ -16,7 +15,7 @@ const AuthRoute = () => {
       <Route
         exact
         path="/"
-        render={() => <Redirect to={userInfo ? "home" : "login"} />}
+        render={() => <Redirect to={authData ? "home" : "login"} />}
       />
     </>
   );

@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: none;
@@ -9,25 +8,25 @@ export const Container = styled.div`
     flex-direction: column;
 
     width: min(399px, 100%);
-    background: ${props => props.theme.t_appBgColor}
+    background: ${(props) => props.theme.t_appBgColor};
   }
 `;
 
 export const SearchWrapper = styled.div`
   padding: 10px 24px;
   width: min(399px, 100%);
-  background:${props => props.theme.t_appBgColor};
+  background: ${(props) => props.theme.t_appBgColor};
   position: fixed;
   top: 0;
   z-index: 2;
 
   max-height: 57px;
-  
-  >span {
+
+  > span {
     position: absolute;
     left: 34px;
     top: 29px;
-    font-size:20px;
+    font-size: 20px;
     transform: translateY(-50%);
   }
 `;
@@ -35,17 +34,17 @@ export const SearchWrapper = styled.div`
 export const SearchInput = styled.input`
   width: 100%;
   height: 39px;
-  background: ${props => props.theme.t_search};
+  background: ${(props) => props.theme.t_search};
   font-size: 14px;
   padding: 0 10px 0 52px;
   border-radius: 19.5px;
 
   &::placeholder {
-    color: ${props => props.theme.t_gray};
+    color: ${(props) => props.theme.t_gray};
   }
 
   &:focus {
-    border: 1px solid ${props => props.theme.t_twitter};
+    border: 1px solid ${(props) => props.theme.t_blue};
   }
 `;
 
@@ -55,11 +54,11 @@ export const Body = styled.div`
   padding: 57px 24px 200px;
   margin-top: 3px;
   div {
-    height:300px;
+    height: 300px;
     border-radius: 4px;
-    background:${props => props.theme.t_outline};
+    background: ${(props) => props.theme.t_outline};
     cursor: pointer;
-    
+
     &:hover {
       opacity: 0.7;
     }

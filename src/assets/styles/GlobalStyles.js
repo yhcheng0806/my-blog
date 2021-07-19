@@ -29,5 +29,14 @@ export default createGlobalStyle`
   body {
     background:  ${(props) => props.theme.t_appBgColor};
   }
+
+  ::-webkit-scrollbar {
+    width: 4px;    
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px ${(props) => props.theme.t_blue};
+    background: rgba(${(props) => props.theme.t_blue},.2);
+  }
   
 `;
