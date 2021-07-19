@@ -1,7 +1,6 @@
 export const dark = {
-  t_appBgColor: "#000",
+  t_appBgColor: "#141414",
   t_textColor: "#fff",
-  t_primary: "#000",
   t_secondary: "#15181C",
   t_search: "#202327",
   t_white: "#D9D9D9",

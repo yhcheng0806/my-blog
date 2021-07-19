@@ -20,7 +20,7 @@ import {
   Button,
 } from "./styles";
 
-const Main = ({ setTheme }) => {
+const Main = ({ setTheme, authData }) => {
   const [themeState, setThemeState] = useState(
     localStorage.getItem("themeState") || "light"
   );
@@ -45,32 +45,34 @@ const Main = ({ setTheme }) => {
 
   return (
     <Container>
-      <Header>
-        <LeftWrapper>
-          <Icon type="icon-logo" />
-        </LeftWrapper>
-        <Theme outlined onClick={handleTheme}>
-          <Icon type={`icon-${themeState}`} />
-        </Theme>
-      </Header>
-
+      {authData && (
+        <Header>
+          <LeftWrapper>
+            <Icon type="icon-logo" />
+          </LeftWrapper>
+          <Theme outlined onClick={handleTheme}>
+            <Icon type={`icon-${themeState}`} />
+          </Theme>
+        </Header>
+      )}
       <Pages>
         <Switch>
           <AuthRoute />
         </Switch>
       </Pages>
-
-      <BottomMenu>
-        {tabBar.map(({ icon, path }) => (
-          <Status
-            className={pathname === path && "active"}
-            key={path}
-            onClick={() => toPage(path)}
-          >
-            <Icon type={`icon-${icon}`} />
-          </Status>
-        ))}
-      </BottomMenu>
+      {authData && (
+        <BottomMenu>
+          {tabBar.map(({ icon, path }) => (
+            <Status
+              className={pathname === path && "active"}
+              key={path}
+              onClick={() => toPage(path)}
+            >
+              <Icon type={`icon-${icon}`} />
+            </Status>
+          ))}
+        </BottomMenu>
+      )}
     </Container>
   );
 };

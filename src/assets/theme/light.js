@@ -1,7 +1,6 @@
 export const light = {
   t_appBgColor: "#fff",
   t_textColor: "#000",
-  t_primary: "#fff",
   t_secondary: "#15181C",
   t_search: "#f1f1f1",
   t_white: "#D9D9D9",

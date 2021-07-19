@@ -15,19 +15,11 @@ const Layout = ({ setTheme }) => {
   return (
     <Router>
       <Container>
-        {authData ? (
-          <Wrapper>
-            <MenuBar />
-            <Main setTheme={setTheme} />
-            {/* <SideBar /> */}
-          </Wrapper>
-        ) : (
-          <Wrapper>
-            <Switch>
-              <AuthRoute />
-            </Switch>
-          </Wrapper>
-        )}
+        <Wrapper>
+          {authData && <MenuBar />}
+          <Main authData={authData} setTheme={setTheme} />
+          {/* <SideBar /> */}
+        </Wrapper>
       </Container>
     </Router>
   );
