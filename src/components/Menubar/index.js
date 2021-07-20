@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Icon from "../common/Icon";
 import { modifyPathname } from "../../actions/tabBar";
-import { logout } from "../../actions/auth";
+import { logout } from "../../actions/user";
 
 import {
   Container,

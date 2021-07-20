@@ -17,10 +17,9 @@ import {
   Pages,
   BottomMenu,
   Status,
-  Button,
 } from "./styles";
 
-const Main = ({ setTheme, authData }) => {
+const Main = ({ setTheme, userInfo }) => {
   const [themeState, setThemeState] = useState(
     localStorage.getItem("themeState") || "light"
   );
@@ -45,7 +44,7 @@ const Main = ({ setTheme, authData }) => {
 
   return (
     <Container>
-      {authData && (
+      {userInfo && (
         <Header>
           <LeftWrapper>
             <Icon type="icon-logo" />
@@ -60,7 +59,7 @@ const Main = ({ setTheme, authData }) => {
           <AuthRoute />
         </Switch>
       </Pages>
-      {authData && (
+      {userInfo && (
         <BottomMenu>
           {tabBar.map(({ icon, path }) => (
             <Status
