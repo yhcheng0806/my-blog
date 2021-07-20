@@ -12,11 +12,11 @@ const AuthRoute = () => {
   return (
     <>
       <Route path="/:page" component={PageRenderer} />
-      {/* <Route
+      <Route
         exact
         path="/"
         render={() => <Redirect to={authData ? "home" : "login"} />}
-      /> */}
+      />
     </>
   );
 };
