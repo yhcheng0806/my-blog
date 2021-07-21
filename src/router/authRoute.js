@@ -1,22 +1,26 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Route, Redirect, useLocation } from "react-router-dom";
+import { getToken } from "../utils/auth";
 
 import PageRenderer from "./pageRenderer";
 
 const AuthRoute = () => {
-  const userInfo =
-    useSelector((state) => state.user.userInfo) ||
-    JSON.parse(localStorage.getItem("userInfo"));
+  const token = getToken();
+  const { pathname } = useLocation();
+  if (token && pathname === "/login") {
+    return <Redirect to="/home" />;
+  }
+  if (!token && pathname !== "/login" && pathname !== "/register") {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
       <Route path="/:page" component={PageRenderer} />
-      <Route
-        exact
+      {/* <Route
         path="/"
-        render={() => <Redirect to={userInfo ? "home" : "login"} />}
-      />
+        render={() => <Redirect to={token ? "home" : "login"} />}
+      /> */}
     </>
   );
 };

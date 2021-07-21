@@ -7,23 +7,21 @@ export const login = (formData, history) => async (dispatch) => {
 
     dispatch({ type: LOGIN, data });
 
-    history.push("/");
+    history.push("/home");
   } catch (error) {
     console.log(error.message);
   }
 };
 export const register = (formData, history) => async (dispatch) => {
   try {
-    const { data } = await api.register(formData);
+    await api.register(formData);
 
-    dispatch({ type: LOGIN, data });
-
-    history.push("/");
+    history.push("/login");
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 export const logout = (history) => {
-  history.push("/");
+  history.push("/login");
   return { type: LOGOUT };
 };

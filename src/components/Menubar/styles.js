@@ -115,6 +115,7 @@ export const WriteButton = styled.div`
     margin-left: 8px;
   }
   &:hover {
+    cursor: pointer;
     opacity: 0.8;
   }
 `;

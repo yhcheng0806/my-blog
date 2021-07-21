@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../common/Icon";
 import { modifyPathname } from "../../actions/tabBar";
 import { logout } from "../../actions/user";
@@ -19,8 +19,10 @@ import {
 } from "./styles";
 
 const MenuBar = () => {
+  const { userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const {
     tabBar: { tabBar, pathname },
@@ -30,6 +32,10 @@ const MenuBar = () => {
     history.push(path);
     dispatch(modifyPathname(path));
   };
+
+  useEffect(() => {
+    dispatch(modifyPathname(location.pathname));
+  }, [dispatch, location]);
 
   return (
     <Container>
@@ -47,7 +53,7 @@ const MenuBar = () => {
             </Status>
           ))}
         </MenuIcons>
-        <WriteButton>
+        <WriteButton onClick={() => toPage("write")}>
           <Icon type="icon-write" />
           <strong>记录</strong>
         </WriteButton>
@@ -56,8 +62,8 @@ const MenuBar = () => {
         <Avatar />
 
         <ProfileData>
-          <strong>yhcheng0806</strong>
-          <strong>18892083800@163.com</strong>
+          <strong>{userInfo?.account}</strong>
+          <strong>{userInfo?.email}</strong>
         </ProfileData>
         <Icon type="icon-exit" onClick={() => dispatch(logout(history))} />
       </Botside>

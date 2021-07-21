@@ -10,7 +10,6 @@ import { Container, Wrapper } from "./styles";
 
 const Layout = ({ setTheme }) => {
   const { userInfo } = useSelector((state) => state.user);
-  console.log(userInfo, "--userInfo");
   return (
     <Router>
       <Container>

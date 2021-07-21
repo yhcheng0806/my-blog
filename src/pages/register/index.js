@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Form, Input, Button } from "antd";
 
-import { login } from "../../actions/user";
+import { register } from "../../actions/user";
 
 import { Container } from "./styles";
 
@@ -12,18 +12,18 @@ const initilstae = {
   password: "",
 };
 
-const Login = () => {
+const Register = () => {
   const [formData, setFormData] = useState(initilstae);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = () => {
     console.log(formData, "-formData");
-    dispatch(login(formData, history));
+    dispatch(register(formData, history));
   };
   const toPage = () => {
     console.log("----d--");
-    history.push("/register");
+    history.push("/");
   };
 
   const handleChange = (e) => {
@@ -51,13 +51,16 @@ const Login = () => {
             onChange={handleChange}
           />
         </Form.Item>
+        <Form.Item label="邮箱">
+          <Input name="email" value={formData.email} onChange={handleChange} />
+        </Form.Item>
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            {"登录"}
+            {"注册"}
           </Button>
           <Button type="text" onClick={toPage}>
-            注册
+            登录
           </Button>
         </Form.Item>
       </Form>
@@ -65,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
