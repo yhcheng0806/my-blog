@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
-import { Form, Input, Button, Upload } from "antd";
+import { Form, Input, Button } from "antd";
 
 import * as api from "../../api";
 
@@ -65,7 +65,7 @@ const Write = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            {"确定1"}
+            {"确定"}
           </Button>
         </Form.Item>
       </Form>
