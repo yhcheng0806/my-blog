@@ -65,7 +65,7 @@ const Write = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            {"确定"}
+            {"确定1"}
           </Button>
         </Form.Item>
       </Form>
