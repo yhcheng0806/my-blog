@@ -21,7 +21,7 @@ API.interceptors.response.use(
     return res;
   },
   (err) => {
-    message.error(err.response.data.message || "网络繁忙，稍后请重试");
+    // message.error(err.response.data.message || "网络繁忙，稍后请重试");
     return Promise.reject(err);
   }
 );

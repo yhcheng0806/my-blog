@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Upload } from "antd";
 
 import * as api from "../../api";
 
@@ -33,6 +33,21 @@ const Write = () => {
     api.upload(params);
   };
 
+  const customRequest = async ({ file, filename, onError, onSuccess }) => {
+    console.log(file, filename, "---e-----");
+    const formData = new FormData();
+    formData.append("name", file.name);
+    formData.append(filename, file);
+    setFormData({ ...formData, photo: file });
+
+    try {
+      const res = await api.upload(formData);
+      onSuccess(res, file);
+    } catch (error) {
+      onError(error);
+    }
+  };
+
   return (
     <Container>
       <Form
@@ -47,13 +62,9 @@ const Write = () => {
           <Input name="desc" value={formData.desc} onChange={handleChange} />
         </Form.Item>
         <Form.Item label="图片">
-          {/* <Upload
-            name="file"
-            action="http://localhost:5000/api/upload"
-            onChange={handleUplaod}
-          >
+          <Upload status="uploading" name="file" customRequest={customRequest}>
             <Button>upload</Button>
-          </Upload> */}
+          </Upload>
           <input type="file" onChange={handleUplaod} />
         </Form.Item>
         <Form.Item>
