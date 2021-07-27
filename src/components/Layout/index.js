@@ -1,23 +1,33 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import MenuBar from "../Menubar";
 // import SideBar from "../SideBar";
 import Main from "../Main";
+import AuthRoute from "../../router/authRoute";
 
-import { Container, Wrapper } from "./styles";
+import { Container, Wrapper, CommonWrapper } from "./styles";
 
 const Layout = ({ setTheme }) => {
   const { userInfo } = useSelector((state) => state.user);
+
   return (
     <Router>
       <Container>
-        <Wrapper>
-          {userInfo && <MenuBar />}
-          <Main userInfo={userInfo} setTheme={setTheme} />
-          {/* <SideBar /> */}
-        </Wrapper>
+        {userInfo ? (
+          <Wrapper>
+            <MenuBar />
+            <Main userInfo={userInfo} setTheme={setTheme} />
+            {/* <SideBar /> */}
+          </Wrapper>
+        ) : (
+          <CommonWrapper>
+            <Switch>
+              <AuthRoute />
+            </Switch>
+          </CommonWrapper>
+        )}
       </Container>
     </Router>
   );
