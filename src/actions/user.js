@@ -1,23 +1,23 @@
 import { LOGOUT, LOGIN } from "../constants/actionTypes";
 import * as api from "../api";
 
-export const login = (formData, history) => async (dispatch) => {
+export const login = (formData, history, cb) => async (dispatch) => {
+  console.log("-31232131---");
   try {
     const { data } = await api.login(formData);
-
     dispatch({ type: LOGIN, data });
-
-    history.push("/home");
+    cb({ path: "/login" });
   } catch (error) {
+    cb({ error });
     console.log(error.message);
   }
 };
-export const register = (formData, history) => async (dispatch) => {
+export const register = (formData, cb) => async (dispatch) => {
   try {
     await api.register(formData);
-
-    history.push("/login");
+    cb({ path: "/login" });
   } catch (error) {
+    cb({ error });
     console.log(error);
   }
 };

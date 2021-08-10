@@ -1,17 +1,18 @@
 import { LOGIN, LOGOUT } from "../constants/actionTypes";
 
+const userInfo = JSON.parse(localStorage.getItem("userInfo"))?.result;
 const defaultState = {
-  userInfo: JSON.parse(localStorage.getItem("userInfo") || null),
+  userInfo: userInfo || null,
 };
 
 const authReducer = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
       localStorage.setItem("userInfo", JSON.stringify({ ...action?.data }));
-      console.log(action, "--action--");
       return { ...state, userInfo: action?.data?.result };
     case LOGOUT:
-      localStorage.clear();
+      localStorage.removeItem("userInfo");
+      // localStorage.clear();
       return { ...state, userInfo: null };
     default:
       return state;

@@ -1,25 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../common/Icon";
 import { modifyPathname } from "../../actions/tabBar";
-import { logout } from "../../actions/user";
+import { modifyTheme } from "../../assets/theme";
+import { modifyThemeType } from "../../actions/theme";
 
 import {
   Container,
   Topside,
-  // Logo,
   MenuIcons,
   Status,
   Botside,
-  Avatar,
-  ProfileData,
-  WriteButton,
+  Theme,
 } from "./styles";
 
-const MenuBar = () => {
-  const { userInfo } = useSelector((state) => state.user);
+const MenuBar = ({ setTheme }) => {
+  const [themeState, setThemeState] = useState(
+    localStorage.getItem("themeState") || "light"
+  );
+  // const { userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -27,6 +28,14 @@ const MenuBar = () => {
   const {
     tabBar: { tabBar, pathname },
   } = useSelector((state) => state);
+
+  const handleTheme = () => {
+    const state = themeState === "light" ? "dark" : "light";
+    setThemeState(state);
+    dispatch(modifyThemeType(state));
+    setTheme(modifyTheme(state));
+    localStorage.setItem("themeState", state);
+  };
 
   const toPage = (path) => {
     history.push(path);
@@ -40,7 +49,6 @@ const MenuBar = () => {
   return (
     <Container>
       <Topside>
-        {/* <Logo></Logo> */}
         <MenuIcons>
           {tabBar.map(({ name, icon, path }) => (
             <Status
@@ -53,19 +61,11 @@ const MenuBar = () => {
             </Status>
           ))}
         </MenuIcons>
-        <WriteButton onClick={() => toPage("write")}>
-          <Icon type="icon-write" />
-          <strong>记录</strong>
-        </WriteButton>
       </Topside>
       <Botside>
-        <Avatar />
-
-        <ProfileData>
-          <strong>{userInfo?.account}</strong>
-          <strong>{userInfo?.email}</strong>
-        </ProfileData>
-        <Icon type="icon-exit" onClick={() => dispatch(logout(history))} />
+        <Theme outlined onClick={handleTheme}>
+          <Icon type={`icon-${themeState}`} />
+        </Theme>
       </Botside>
     </Container>
   );

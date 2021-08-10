@@ -1,72 +1,60 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
-import Icon from "../../components/common/Icon";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 import { login } from "../../actions/user";
 
 import {
   Wrapper,
-  FormContainer,
+  Container,
+  LoginLeft,
+  LoginRight,
   Form,
-  FormTitle,
   FormItem,
   Input,
-  FormBtn,
-  FormTip,
-  PanelContainer,
-  Panel,
+  Tip,
+  Button,
+  Forgot,
 } from "./styles";
 
-const initLoginData = {
-  type: "login",
-  dataArr: [
-    {
-      name: "account",
-      icon: "user",
-    },
-    {
-      name: "password",
-      icon: "password",
-    },
-  ],
-  result: null,
-};
-
-const initRegisterData = {
-  type: "register",
+const defaultData = {
   dataArr: [
     {
       name: "account",
       icon: "account",
-    },
-    {
-      name: "email",
-      icon: "email1",
+      placeholder: "输入你的用户名/邮箱",
+      type: "text",
     },
     {
       name: "password",
       icon: "lock",
+      placeholder: "输入密码",
+      type: "password",
     },
   ],
   result: null,
 };
 
 const Login = () => {
-  const [formData, setFormData] = useState(initLoginData);
-  const { type, dataArr, result } = formData;
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState(defaultData);
+  const { dataArr, result } = formData;
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = () => {
-    console.log(result, "---result--");
+    if (loading) return;
 
-    // dispatch(login(formData, history));
-  };
-  const toPage = () => {
-    console.log("----d--");
-    history.push("/register");
+    setLoading(true);
+    dispatch(
+      login(result, history, ({ error }) => {
+        error && setError(error);
+        setLoading(false);
+      })
+    );
   };
 
   const handleFormChange = (e) => {
@@ -78,37 +66,50 @@ const Login = () => {
       },
     });
   };
-  const toggleType = (type) => {
-    setFormData(type === "login" ? initLoginData : initRegisterData);
-  };
 
   return (
     <Wrapper>
-      <FormContainer className={type}>
-        <Form className={type}>
-          <FormTitle>blog</FormTitle>
-          {dataArr.map(({ name, icon }, index) => (
-            <FormItem key={index}>
-              <Icon type={`icon-${icon}`} />
-              <Input
-                onChange={handleFormChange}
-                placeholder={name}
-                type={name}
-                name={name}
-              />
-            </FormItem>
-          ))}
-          <FormBtn onClick={handleSubmit}>{type}</FormBtn>
-          <FormTip
-            onClick={() => toggleType(type === "login" ? "register" : "login")}
-          >
-            {type === "login" ? "创建新账号？" : "去登录"}
-          </FormTip>
-        </Form>
-      </FormContainer>
-      <PanelContainer>
-        <Panel className={type}>{type}</Panel>
-      </PanelContainer>
+      <Container>
+        <LoginLeft>
+          {/* <strong>Qu Shi</strong> */}
+          <strong>趣事</strong>
+          <span>在社交网站上与朋友和你周围的世界联系。</span>
+        </LoginLeft>
+        <LoginRight>
+          <Form>
+            {dataArr.map(({ name, placeholder, type }) => (
+              <FormItem key={name}>
+                <Input
+                  onChange={handleFormChange}
+                  placeholder={placeholder}
+                  value={result?.name}
+                  type={type}
+                  name={name}
+                />
+              </FormItem>
+            ))}
+            {error && <Tip>{error}</Tip>}
+            <Button
+              className={!loading ? "login" : "empty"}
+              onClick={handleSubmit}
+            >
+              {!loading ? (
+                <span>进入</span>
+              ) : (
+                <Spin className="loading" indicator={<LoadingOutlined />} />
+              )}
+              <div className="bg"></div>
+            </Button>
+            <Forgot>忘记密码？</Forgot>
+            <Button
+              className="register"
+              onClick={() => history.push("/register")}
+            >
+              创建新的账号
+            </Button>
+          </Form>
+        </LoginRight>
+      </Container>
     </Wrapper>
   );
 };

@@ -1,13 +1,11 @@
-import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import MenuBar from "../Menubar";
-// import SideBar from "../SideBar";
+import RightBar from "../RightBar";
 import Main from "../Main";
-import AuthRoute from "../../router/authRoute";
 
-import { Container, Wrapper, CommonWrapper } from "./styles";
+import { Container, Wrapper } from "./styles";
 
 const Layout = ({ setTheme }) => {
   const { userInfo } = useSelector((state) => state.user);
@@ -15,19 +13,11 @@ const Layout = ({ setTheme }) => {
   return (
     <Router>
       <Container>
-        {userInfo ? (
-          <Wrapper>
-            <MenuBar />
-            <Main userInfo={userInfo} setTheme={setTheme} />
-            {/* <SideBar /> */}
-          </Wrapper>
-        ) : (
-          <CommonWrapper>
-            <Switch>
-              <AuthRoute />
-            </Switch>
-          </CommonWrapper>
-        )}
+        <Wrapper className={!userInfo && "full"}>
+          {userInfo && <MenuBar setTheme={setTheme} />}
+          <Main userInfo={userInfo} />
+          <RightBar />
+        </Wrapper>
       </Container>
     </Router>
   );

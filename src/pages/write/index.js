@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
-import { Form, Input, Button, Upload } from "antd";
-
+import Icon from "../../components/common/Icon";
 import * as api from "../../api";
 
-import { Container } from "./styles";
+import {
+  Container,
+  Form,
+  FormItem,
+  Label,
+  Input,
+  Textarea,
+  Tools,
+  Btn,
+} from "./styles";
 
 const initialState = {
   title: "",
@@ -50,7 +58,27 @@ const Write = () => {
 
   return (
     <Container>
-      <Form
+      <Form>
+        <FormItem>
+          <Label>标题</Label>
+          <Input />
+        </FormItem>
+        <FormItem>
+          <Tools>
+            <Icon />
+            <Icon />
+            <Icon />
+            <Icon />
+            <Icon />
+          </Tools>
+          <Btn>提交</Btn>
+        </FormItem>
+        <FormItem>
+          <Textarea placeholder="记录生活" />
+        </FormItem>
+        <FormItem></FormItem>
+      </Form>
+      {/* <Form
         name="basic"
         initialValues={{ remember: true }}
         onFinish={handleSubmit}
@@ -79,7 +107,7 @@ const Write = () => {
             {"确定"}
           </Button>
         </Form.Item>
-      </Form>
+      </Form> */}
     </Container>
   );
 };

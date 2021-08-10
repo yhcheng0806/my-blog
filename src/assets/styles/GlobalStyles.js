@@ -6,13 +6,14 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing:border-box;
 
-    color: ${(props) => props.theme.t_textColor};
+    color: ${(props) => props.theme.appTextColor};
   }
   html, body, #root {
     max-width: 100vw;
     max-height: 100vh;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   button, a {
     cursor: pointer;
@@ -27,16 +28,22 @@ export default createGlobalStyle`
     list-style: none;
   }
   body {
-    background:  ${(props) => props.theme.t_appBgColor};
+    background:  ${(props) => props.theme.appBgColor};
+  }
+  .ant-message-notice {
+    color: red !important;
   }
 
   ::-webkit-scrollbar {
-    width: 4px;    
+    /* width: 4px; */
+    width: 0;
+    
+  }
+  ::-webkit-scrollbar-track {
+  /* background-color: #fff; */
   }
   ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 5px ${(props) => props.theme.t_blue};
-    background: rgba(${(props) => props.theme.t_blue},.2);
+    background: ${(props) => props.theme.appBorderColor};
   }
   
 `;

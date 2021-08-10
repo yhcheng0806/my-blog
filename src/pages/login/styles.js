@@ -1,136 +1,231 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: auto;
-  border: 1px solid #000;
-`;
-export const FormContainer = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
   height: 100%;
-  overflow: hidden;
-  &::before {
-    content: "";
-    position: absolute;
-    height: 2000px;
-    width: 2000px;
-    top: -10%;
-    right: 50%;
-    transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
-    border-radius: 50%;
-    transition: 1.8s ease-in-out;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Container = styled.div`
+  width: 80%;
+  height: 80%;
+  display: flex;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  &.register {
-    &::before {
-      transform: translate(100%, -50%);
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 100%;
+    padding: 40px 20px;
+  }
+`;
+
+export const LoginLeft = styled.div`
+  flex: 1;
+  padding: 0 40px;
+  > strong {
+    font-size: 38px;
+    font-weight: 800;
+  }
+  > span {
+    font-size: 14px;
+    padding: 20px 0;
+    letter-spacing: 4px;
+  }
+  @media (max-width: 1000px) {
+    flex: 2;
+    padding: 0;
+    > strong {
+      font-size: 38px;
+    }
+    > span {
+      font-size: 14px;
+      padding: 10px 0;
+      letter-spacing: 4px;
+    }
+  }
+  @media (max-width: 500px) {
+    padding: 0;
+    > strong {
+      font-size: 16px;
+    }
+    > span {
+      font-size: 12px;
     }
   }
 `;
 
-export const Form = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 0.5s ease-in-out;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0rem 5rem;
-  /* min-width: 340px; */
+export const LoginRight = styled.div`
+  flex: 1;
+  background: ${(props) => props.theme.appThemeColor};
+  border-radius: 2px;
 
-  /* transition: all 0.2s 0.7s; */
-  /* overflow: hidden; */
-  z-index: 1;
-  &.login {
-    left: 50%;
-  }
-  &.register {
-    left: 0;
+  -webkit-box-shadow: ${(props) =>
+    `0px 0px 16px -8px rgba(${props.theme.appTextColorRgb}, 0.68)`};
+  box-shadow: ${(props) =>
+    `0px 0px 16px -8px rgba(${props.theme.appTextColorRgb}, 0.68)`};
+  @media (max-width: 1000px) {
+    flex: 10;
   }
 `;
 
-export const FormTitle = styled.div`
-  font-weight: 500;
-  font-size: 2.2rem;
-  color: #444;
-  margin-bottom: 10px;
+export const Form = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 80px;
+  @media (max-width: 500px) {
+    padding: 0 20px;
+  }
 `;
 
 export const FormItem = styled.div`
-  background-color: #f0f0f0;
-  max-width: 380px;
-  width: 100%;
-  height: 55px;
-  border-radius: 55px;
-  margin: 10px 0;
-  padding: 0 1rem;
-  display: flex;
+  width: min(100%, 500px);
+  font-size: 18px;
+  margin-bottom: 40px;
+`;
 
-  align-items: center;
-  > span {
-    font-size: 24px;
-    margin-right: 10px;
-    flex-shrink: 0;
+export const Label = styled.div`
+  margin-bottom: 10px;
+  span {
+    color: #fff;
+    svg {
+      fill: #fff;
+    }
+  }
+  strong {
+    color: #fff;
+    font-weight: 400;
   }
 `;
 
 export const Input = styled.input`
-  flex: 1;
-`;
-
-export const FormBtn = styled.button`
-  width: 150px;
-  background-color: #5995fd;
-  height: 50px;
-  border-radius: 50px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.5s;
-  &:hover {
-    background-color: #4d84e2;
-  }
-`;
-
-export const FormTip = styled.div`
-  padding: 0.7rem 0;
-  font-size: 0.5rem;
-  &:hover {
-    cursor: pointer;
-    color: #5995fd;
-  }
-`;
-
-export const PanelContainer = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
+  height: 40px;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  &::placeholder {
+    color: #fff;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
-export const Panel = styled.div`
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  transition: 1.8s ease-in-out;
-  z-index: 4;
-  &.login {
-    right: 50%;
+export const Tip = styled.div`
+  color: #fff;
+  padding: 0 0 20px;
+  width: 100%;
+`;
+
+export const Button = styled.div`
+  position: relative;
+  width: min(100%, 500px);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 26px;
+    svg {
+      fill: #fff;
+    }
   }
   &.register {
-    right: 0;
+    justify-content: flex-end;
+    color: #fff;
+    &:hover {
+      opacity: 0.8;
+    }
   }
+  &.empty {
+  }
+  &.login {
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      transition: 0.2s;
+    }
+    &::after {
+      left: 0;
+    }
+    &::before {
+      right: 0;
+    }
+    &:hover {
+      &::before,
+      &::after {
+        width: 50%;
+        height: 100%;
+        opacity: 0;
+        transition-delay: 0.5s;
+      }
+      > .bg {
+        height: 0;
+        transition-delay: 0.2s;
+      }
+      span {
+        color: #fff;
+        transition-delay: 0.2s;
+      }
+    }
+    span {
+      position: relative;
+      z-index: 2;
+      color: ${(props) => props.theme.appThemeColor};
+      font-size: 20px;
+      letter-spacing: 4px;
+    }
+    > .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      z-index: 1;
+      transition: 0.2s;
+    }
+  }
+  @media (max-width: 500px) {
+    height: 40px;
+    font-size: 12px;
+    &.login {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+export const Forgot = styled.div`
+  width: min(100%, 500px);
+  margin: 40px 0 0;
+  font-size: 12px;
+  color: #fff;
+  text-align: right;
 `;

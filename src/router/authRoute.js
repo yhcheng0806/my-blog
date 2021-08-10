@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Redirect, useLocation } from "react-router-dom";
 import { getToken } from "../utils/auth";
 
@@ -7,9 +6,10 @@ import PageRenderer from "./pageRenderer";
 const AuthRoute = () => {
   const token = getToken();
   const { pathname } = useLocation();
-  if (token && pathname === "/login") {
+  if ((token && pathname === "/login") || (token && pathname === "/")) {
     return <Redirect to="/home" />;
   }
+
   if (!token && pathname !== "/login" && pathname !== "/register") {
     return <Redirect to="/login" />;
   }

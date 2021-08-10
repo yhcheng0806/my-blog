@@ -3,7 +3,7 @@ const defaultState = {
   tabBar: [
     {
       icon: "home",
-      name: "首页",
+      name: "趣事",
       path: "/home",
     },
     {

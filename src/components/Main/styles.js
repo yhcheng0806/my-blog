@@ -3,35 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: min(601px, 100%);
-
-  @media (min-width: 500px) {
-    border-left: 1px solid ${(props) => props.theme.t_outline};
-    border-right: 1px solid ${(props) => props.theme.t_outline};
-  }
-`;
-
-export const Header = styled.div`
-  z-index: 2;
-  position: sticky;
-  top: 0;
-  background: ${(props) => props.theme.t_appBgColor};
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: left;
-  padding: 8px 13px 9px 13px;
-  border-bottom: 1px solid ${(props) => props.theme.t_outline};
-`;
-
-export const LeftWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    font-size: 22px;
-    color: ${(props) => props.theme.textColor};
-  }
+  width: 100%;
+  /* width: min(601px, 100%); */
 `;
 
 export const Theme = styled.div`
@@ -43,7 +16,10 @@ export const Theme = styled.div`
 
 export const Pages = styled.div`
   height: 100%;
-  padding-bottom: 40px;
+  overflow: auto;
+  &.phone {
+    padding-bottom: 48px;
+  }
 `;
 
 export const BottomMenu = styled.div`
@@ -52,8 +28,8 @@ export const BottomMenu = styled.div`
   left: 0;
   z-index: 2;
   width: 100%;
-  background: ${(props) => props.theme.t_appBgColor};
-  border-top: 1px solid ${(props) => props.theme.t_outline};
+  background: ${(props) => props.theme.appBgColor};
+  border-top: 1px solid ${(props) => props.theme.appBorderColor};
   display: flex;
   justify-content: space-between;
   padding: 8px min(46px, max(10vw, 10px));
@@ -67,13 +43,13 @@ export const Status = styled.div`
     font-size: 24px;
     cursor: pointer;
     svg {
-      fill: ${(props) => props.theme.t_textColor};
+      fill: ${(props) => props.theme.appTextColor};
     }
   }
   &:hover,
   &.active {
     svg {
-      fill: ${(props) => props.theme.t_blue};
+      fill: ${(props) => props.theme.appThemeColor};
     }
   }
 `;

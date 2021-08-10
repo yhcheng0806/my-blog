@@ -15,7 +15,9 @@ API.interceptors.request.use((req) => {
 API.interceptors.response.use(
   (res) => {
     if (res.data.message) {
-      message.error(res.data.message);
+      message.error({
+        content: res.data.message,
+      });
       return Promise.reject(res.data.message);
     }
     return res;
