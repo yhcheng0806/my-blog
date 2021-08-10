@@ -14,7 +14,6 @@ export const ShareWrapper = styled.div`
 
 export const ShareTop = styled.div`
   display: flex;
-  align-items: center;
   padding: 10px;
 `;
 
@@ -27,9 +26,11 @@ export const Avatar = styled.img`
   background: ${(props) => props.theme.appBorderColor};
 `;
 
-export const Input = styled.input`
+export const Textarea = styled.textarea`
   border: none;
-  width: 80%;
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
 `;
 
 export const ShareContainer = styled.div`

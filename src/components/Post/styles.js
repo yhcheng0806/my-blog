@@ -30,12 +30,11 @@ export const PostTopLeft = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const Avatar = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  background: ${(props) => props.theme.appDefaultBoxColor};
 `;
 
 export const PostDate = styled.div`

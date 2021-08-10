@@ -1,4 +1,5 @@
 import Icon from "../common/Icon";
+import noAvatar from "../../assets/images/noAvatar.png";
 
 import {
   PostWrapper,
@@ -20,14 +21,16 @@ const Post = () => {
     <PostWrapper>
       <PostTop>
         <PostTopLeft>
-          <Avatar />
+          <Avatar src={noAvatar} />
           <strong>用户名</strong>
           <PostDate>1天前</PostDate>
         </PostTopLeft>
         <PostTopRight></PostTopRight>
       </PostTop>
       <PostCenter>
-        <PostText>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</PostText>
+        <PostText>
+          一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述
+        </PostText>
         <PostImg />
       </PostCenter>
       <PostBottom>

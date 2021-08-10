@@ -28,7 +28,9 @@ API.interceptors.response.use(
   }
 );
 
-export const login = (formData) => API.post("/user/login", formData);
-export const register = (formData) => API.post("/user/register", formData);
+export const login = (formData) => API.post("/auth/login", formData);
+export const register = (formData) => API.post("/auth/register", formData);
+
+export const createPost = (data) => API.post("/posts", data);
 
 export const upload = (data) => API.post("/upload", data);
