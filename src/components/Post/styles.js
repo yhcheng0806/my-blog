@@ -45,7 +45,6 @@ export const PostTopRight = styled.div``;
 
 export const PostCenter = styled.div`
   margin: 10px 0;
-
 `;
 
 export const PostText = styled.div`
@@ -53,13 +52,13 @@ export const PostText = styled.div`
   line-height: 1.3;
 `;
 
-export const PostImg = styled.div`
+export const PostImg = styled.img`
   margin-top: 10px;
   width: 100%;
   /* max-height: 500px; */
   height: min(285px, max(175px, 41vw));
   background: ${(props) => props.theme.appBorderColor};
-  object-fit: contain;
+  object-fit: cover;
 
   &:hover {
     opacity: 0.7;
@@ -67,7 +66,6 @@ export const PostImg = styled.div`
 `;
 
 export const PostBottom = styled.div`
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,6 +96,14 @@ export const Status = styled.div`
 
   font-size: 16px;
   color: ${(props) => props.theme.appTextColor};
+  &.active {
+    > span {
+      color: "red";
+    }
+    svg {
+      fill: "red";
+    }
+  }
   > span {
     margin-right: 5px;
   }

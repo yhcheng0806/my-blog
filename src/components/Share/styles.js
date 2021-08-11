@@ -9,7 +9,7 @@ export const ShareWrapper = styled.div`
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   padding: 20px 0;
   z-index: 100;
-  background: ${props=> props.theme.appBgColor};
+  background: ${(props) => props.theme.appBgColor};
 `;
 
 export const ShareTop = styled.div`
@@ -36,6 +36,10 @@ export const Textarea = styled.textarea`
 export const ShareContainer = styled.div`
   margin: 16px 20px;
   border-bottom: 2px solid ${(props) => props.theme.appBorderColor};
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const ShareBottom = styled.div`
