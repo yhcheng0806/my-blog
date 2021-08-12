@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PostWrapper = styled.div`
+export const Wrapper = styled.div`
+  padding: 10px;
+`;
+
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -61,51 +65,5 @@ export const PostImg = styled.img`
 
   &:hover {
     opacity: 0.7;
-  }
-`;
-
-export const PostBottom = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const Icons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 100%; /** Mobile */
-  @media (min-width: 330px) {
-    width: 90%;
-  }
-  > div {
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-`;
-
-export const Status = styled.div`
-  display: flex;
-  align-items: center;
-
-  font-size: 16px;
-  color: ${(props) => props.theme.appTextColor};
-
-  &.active {
-    color: #ff4d4d;
-    svg {
-      fill: #ff4d4d;
-    }
-  }
-  > span {
-    margin-right: 5px;
-  }
-  svg {
-    fill: ${(props) => props.theme.appTextColor};
   }
 `;

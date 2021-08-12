@@ -20,14 +20,12 @@ const MenuBar = ({ setTheme }) => {
   const [themeState, setThemeState] = useState(
     localStorage.getItem("themeState") || "light"
   );
-  // const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector((state) => state.user);
+  const { tabBar, pathname } = useSelector((state) => state.tabBar);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
 
-  const {
-    tabBar: { tabBar, pathname },
-  } = useSelector((state) => state);
 
   const handleTheme = () => {
     const state = themeState === "light" ? "dark" : "light";
@@ -38,6 +36,9 @@ const MenuBar = ({ setTheme }) => {
   };
 
   const toPage = (path) => {
+    if (path.includes("/user")) {
+      path = `${path}/${userInfo?.username}`;
+    }
     history.push(path);
     dispatch(modifyPathname(path));
   };
@@ -52,7 +53,7 @@ const MenuBar = ({ setTheme }) => {
         <MenuIcons>
           {tabBar.map(({ name, icon, path }) => (
             <Status
-              className={pathname === path && "active"}
+              className={pathname.includes(path) && "active"}
               key={path}
               onClick={() => toPage(path)}
             >

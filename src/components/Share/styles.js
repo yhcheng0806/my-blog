@@ -7,14 +7,16 @@ export const ShareWrapper = styled.div`
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  padding: 20px 0;
+  padding: 20px;
   z-index: 100;
   background: ${(props) => props.theme.appBgColor};
+  * {
+    /* border: 1px solid #000; */
+  }
 `;
 
 export const ShareTop = styled.div`
   display: flex;
-  padding: 10px;
 `;
 
 export const Avatar = styled.img`
@@ -34,11 +36,24 @@ export const Textarea = styled.textarea`
 `;
 
 export const ShareContainer = styled.div`
-  margin: 16px 20px;
+  width: 100%;
+  padding: 16px 20px;
   border-bottom: 2px solid ${(props) => props.theme.appBorderColor};
-  img {
-    width: 100%;
-    object-fit: cover;
+`;
+
+export const ImageContainer = styled.div`
+  position: relative;
+  .closeIcn {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    z-index: 1;
+    font-size: 24px;
+    cursor: pointer;
+    svg {
+      fill: #fff;
+      opacity: 0.9;
+    }
   }
 `;
 
@@ -46,7 +61,8 @@ export const ShareBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  margin-top: 10px;
+  /* border: 1px solid #000; */
 `;
 
 export const ShareOptions = styled.div`

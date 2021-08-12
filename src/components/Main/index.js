@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, useHistory } from "react-router-dom";
 
@@ -8,28 +7,24 @@ import AuthRoute from "../../router/authRoute";
 
 import { modifyPathname } from "../../actions/tabBar";
 
-import {
-  Container,
-  Pages,
-  BottomMenu,
-  Status,
-} from "./styles";
+import { Container, Pages, BottomMenu, Status } from "./styles";
 
 const Main = ({ userInfo }) => {
-  const {
-    tabBar: { tabBar, pathname },
-  } = useSelector((state) => state);
+  const { tabBar, pathname } = useSelector((state) => state.tabBar);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const toPage = (path) => {
+    if (path.includes("/user")) {
+      path = `${path}/${userInfo?.username}`;
+    }
     history.push(path);
     dispatch(modifyPathname(path));
   };
 
   return (
     <Container>
-      <Pages className={ userInfo && 'phone'}>
+      <Pages className={userInfo && "phone"}>
         <Switch>
           <AuthRoute />
         </Switch>

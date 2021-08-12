@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import * as Api from "../../api/models/posts";
 
 import Share from "../../components/Share";
-import Post from "../../components/Post";
+import Posts from "../../components/Posts";
 import { HomeWrapper, HomeContainer } from "./styles";
 
 const Home = () => {
@@ -30,9 +30,7 @@ const Home = () => {
     <HomeWrapper>
       <Share shareRefresh={shareRefresh} setShareRefresh={setShareRefresh} />
       <HomeContainer>
-        {posts.map((post) => (
-          <Post key={post._id} post={post} userInfo={userInfo} />
-        ))}
+        <Posts posts={posts} userInfo={userInfo} />
       </HomeContainer>
     </HomeWrapper>
   );

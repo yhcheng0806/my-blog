@@ -68,7 +68,7 @@ const User = () => {
       <TopContainer>
         <CoverImg src={NoCover} />
         <Avatar className={"default"} src={noAvatar} />
-        {/* {userInfo._id !== user?._id && (
+        {userInfo._id !== user?._id && (
           <FollowButton
             className={user?.fanList.includes(userInfo._id) && "active"}
             onClick={() =>
@@ -77,7 +77,7 @@ const User = () => {
           >
             {user?.fanList.includes(userInfo._id) ? "取消关注" : "关注"}
           </FollowButton>
-        )} */}
+        )}
       </TopContainer>
       <UserInfo>
         <Name>{user?.name || user?.username}</Name>

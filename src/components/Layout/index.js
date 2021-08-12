@@ -9,6 +9,11 @@ import { Container, Wrapper } from "./styles";
 
 const Layout = ({ setTheme }) => {
   const { userInfo } = useSelector((state) => state.user);
+  const {
+    tabBar: { pathname },
+  } = useSelector((state) => state);
+
+  console.log(pathname,'--pathname--')
 
   return (
     <Router>
@@ -16,7 +21,7 @@ const Layout = ({ setTheme }) => {
         <Wrapper className={!userInfo && "full"}>
           {userInfo && <MenuBar setTheme={setTheme} />}
           <Main userInfo={userInfo} />
-          <RightBar />
+          {pathname.includes('/home') && <RightBar />}
         </Wrapper>
       </Container>
     </Router>

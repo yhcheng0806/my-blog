@@ -13,3 +13,5 @@ export const likePost = (id, data) => API.put(`/posts/like/${id}`, data);
 export const getPost = (id) => API.get(`/posts/${id}`);
 
 export const getAllPost = () => API.get(`/posts`);
+
+export const getSelfPosts = (data) => API.post(`/posts/self`, data);

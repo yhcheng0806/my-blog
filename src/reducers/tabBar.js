@@ -12,9 +12,9 @@ const defaultState = {
       path: "/search",
     },
     {
-      icon: "email",
+      icon: "chat",
       name: "消息",
-      path: "/email",
+      path: "/chat",
     },
     {
       icon: "user",

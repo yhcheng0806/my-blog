@@ -11,7 +11,7 @@ export const Container = styled.div`
   height: 100vh;
   min-width:220px;
   /* overflow-y: auto; */
-  border-right: 1px solid ${(props) => props.theme.appBorderColor};
+  /* border-right: 1px solid ${(props) => props.theme.appBorderColor}; */
 
   @media (max-width: 1280px) {
     min-width: 0;

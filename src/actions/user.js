@@ -1,4 +1,4 @@
-import { LOGOUT, LOGIN } from "../constants/actionTypes";
+import { LOGOUT, LOGIN, FOLLOW, UNFOLLOW } from "../constants/actionTypes";
 import * as api from "../api/models/auth";
 
 export const login = (formData, history, cb) => async (dispatch) => {
@@ -22,3 +22,13 @@ export const logout = (history) => {
   history.push("/login");
   return { type: LOGOUT };
 };
+
+export const follow = (userId) => ({
+  type: FOLLOW,
+  payload: userId,
+});
+
+export const unfollow = (userId) => ({
+  type: UNFOLLOW,
+  payload: userId,
+});

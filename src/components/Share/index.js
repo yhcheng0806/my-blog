@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Upload } from "antd";
+import { Upload, Image } from "antd";
+import { CloseCircleFilled } from "@ant-design/icons";
 
 import Icon from "../common/Icon";
 import noAvatar from "../../assets/images/noAvatar.png";
@@ -13,6 +14,7 @@ import {
   Avatar,
   Textarea,
   ShareContainer,
+  ImageContainer,
   ShareBottom,
   ShareOptions,
   ShareOption,
@@ -50,9 +52,8 @@ const Share = ({ shareRefresh, setShareRefresh }) => {
     const formData = new FormData();
     formData.append("name", fileName);
     formData.append("file", file);
-    setFormData({ ...formData, photo: fileName });
-
     await commonApi.upload(formData);
+    setFormData({ ...formData, photo: fileName });
   };
 
   // const uploadFile = async ({ file, filename, onError, onSuccess }) => {
@@ -95,7 +96,15 @@ const Share = ({ shareRefresh, setShareRefresh }) => {
         />
       </ShareTop>
       <ShareContainer>
-        {formData?.photo && <img src={PF + formData.photo} alt='' />}
+        {formData?.photo && (
+          <ImageContainer>
+            <CloseCircleFilled
+              className="closeIcn"
+              onClick={() => setFormData({ ...formData, photo: null })}
+            />
+            <Image width="100%" src={PF + formData.photo} />
+          </ImageContainer>
+        )}
       </ShareContainer>
       <ShareBottom>
         <ShareOptions>

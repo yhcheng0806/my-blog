@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from "../constants/actionTypes";
+import { FOLLOW, LOGIN, LOGOUT, UNFOLLOW } from "../constants/actionTypes";
 
 const userInfo = JSON.parse(localStorage.getItem("userInfo"))?.result;
 const defaultState = {
@@ -14,6 +14,25 @@ const authReducer = (state = defaultState, action) => {
       localStorage.removeItem("userInfo");
       // localStorage.clear();
       return { ...state, userInfo: null };
+
+    case FOLLOW:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          followList: [...state.userInfo?.followList, action.payload],
+        },
+      };
+    case UNFOLLOW:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          followList: state.userInfo?.followList.filter(
+            (id) => id !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }
