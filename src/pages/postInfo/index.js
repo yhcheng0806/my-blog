@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { format } from "timeago.js";
+import moment from "moment";
 
 import * as userApi from "../../api/models/users";
 import * as postApi from "../../api/models/posts";
@@ -45,13 +45,13 @@ const PostInfo = () => {
   };
 
   const getPost = async () => {
-    const res = await postApi.getPost(postId)
-    const userRes = await userApi.getUser(res?.data.userId)
-    console.log(res, userRes, '--res')
-    
-    setPost(res.data)
-    setUser(userRes.data)
-  }
+    const res = await postApi.getPost(postId);
+    const userRes = await userApi.getUser(res?.data.userId);
+    console.log(res, userRes, "--res");
+
+    setPost(res.data);
+    setUser(userRes.data);
+  };
 
   useEffect(() => {
     getPost();
@@ -64,7 +64,9 @@ const PostInfo = () => {
           <PostTopLeft>
             <Avatar onClick={toUserPage} src={user?.avatar || noAvatar} />
             <strong>{user?.username}</strong>
-            {/* <PostDate>{format(post.createdAt, "zh_CN")}</PostDate> */}
+            <PostDate>
+              {moment(post?.createdAt).format("YYYY-MM-DD hh:mm")}
+            </PostDate>
           </PostTopLeft>
           <PostTopRight></PostTopRight>
         </PostTop>
