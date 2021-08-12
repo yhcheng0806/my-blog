@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Image } from "antd";
 
 import moment from "moment";
 
@@ -72,7 +73,7 @@ const PostInfo = () => {
         </PostTop>
         <PostCenter>
           <PostText>{post?.desc}</PostText>
-          {post?.photo && <PostImg src={PF + post.photo} />}
+          {post?.photo && <Image width="100%" src={PF + post.photo} />}
         </PostCenter>
       </Container>
     </Wrapper>

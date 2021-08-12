@@ -6,6 +6,20 @@ export const TopContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  > span {
+    &.logoutIcon {
+      position: absolute;
+      bottom: max(-60px, -10vw);
+      left: 60%;
+      transform: translateX(-60%);
+      z-index: 1;
+      font-size: 24px;
+      cursor: pointer;
+      svg {
+        fill: #000;
+      }
+    }
+  }
 `;
 
 export const CoverImg = styled.img`
@@ -95,6 +109,4 @@ export const General = styled.div`
 
 export const CenterContainer = styled.div`
   padding: 10px;
-
 `;
-

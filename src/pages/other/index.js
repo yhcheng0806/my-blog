@@ -111,7 +111,7 @@ const User = () => {
         )}
       </UserInfo>
       <CenterContainer>
-        <Posts posts={posts} userInfo={user} />
+        <Posts posts={posts} userInfo={userInfo} />
       </CenterContainer>
     </UserWrapper>
   );

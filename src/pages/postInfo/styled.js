@@ -53,6 +53,7 @@ export const PostCenter = styled.div`
 export const PostText = styled.div`
   letter-spacing: 1px;
   line-height: 1.3;
+  margin-bottom: 10px;
 `;
 
 export const PostImg = styled.img`

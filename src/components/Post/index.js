@@ -67,7 +67,10 @@ const Post = ({ post, userInfo }) => {
     <PostWrapper>
       <PostTop>
         <PostTopLeft>
-          <Avatar onClick={toUserPage} src={user?.avatar || noAvatar} />
+          <Avatar
+            onClick={toUserPage}
+            src={user?.avatar ? PF + user.avatar : noAvatar}
+          />
           <strong>{user?.username}</strong>
           <PostDate>{format(post.createdAt, "zh_CN")}</PostDate>
         </PostTopLeft>

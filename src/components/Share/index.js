@@ -5,8 +5,8 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 import Icon from "../common/Icon";
 import noAvatar from "../../assets/images/noAvatar.png";
-import * as postApi from "../../api/models/posts";
-import * as commonApi from "../../api/models/common";
+import * as PostApi from "../../api/models/posts";
+import * as CommonApi from "../../api/models/common";
 
 import {
   ShareWrapper,
@@ -52,7 +52,7 @@ const Share = ({ shareRefresh, setShareRefresh }) => {
     const formData = new FormData();
     formData.append("name", fileName);
     formData.append("file", file);
-    await commonApi.upload(formData);
+    await CommonApi.upload(formData);
     setFormData({ ...formData, photo: fileName });
   };
 
@@ -74,7 +74,7 @@ const Share = ({ shareRefresh, setShareRefresh }) => {
   const createShare = async () => {
     console.log(formData, "-createShare");
     try {
-      await postApi.createPost({
+      await PostApi.createPost({
         ...formData,
         userId: userInfo._id,
       });
