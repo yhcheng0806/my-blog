@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 
 import * as PostApi from "../../api/models/posts";
 import * as UserApi from "../../api/models/users";
@@ -30,6 +29,8 @@ import {
   Detail,
   General,
   CenterContainer,
+  FanList,
+  FollowList,
 } from "./styles";
 
 const User = () => {
@@ -41,14 +42,18 @@ const User = () => {
   const username = params[params.length - 1];
   const dispatch = useDispatch();
 
+  const [tab, setTab] = useState("Content");
+
   const [imgUrl, setImgUrl] = useState("");
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
+  const [fanList, setFanList] = useState([]);
+  const [followList, setFollowList] = useState([]);
   const [isFollow, setIsFollow] = useState(false);
 
   useEffect(() => {
     fetchUser();
-  }, [isFollow]);
+  }, [username, isFollow]);
 
   const fetchUser = async () => {
     const userRes = await UserApi.getUser(username);
@@ -62,6 +67,11 @@ const User = () => {
         return new Date(p2.createdAt) - new Date(p1.createdAt);
       })
     );
+    const fanRes = await UserApi.getUserfanList(userRes.data?._id);
+    const followRes = await UserApi.getUserFollowList(userRes.data?._id);
+    console.log(fanRes, "--fanRes---");
+
+    console.log(followRes, "--followRes---");
   };
 
   const handleFollowUser = async (state) => {
@@ -85,12 +95,16 @@ const User = () => {
 
     await CommonApi.upload(formData);
     setImgUrl(fileName);
-    console.log('---1----')
+    console.log("---1----");
 
     await UserApi.updateUser(user._id, {
       userId: userInfo._id,
       avatar: fileName,
     });
+  };
+
+  const handleTab = (tab) => {
+    setTab(tab);
   };
 
   return (
@@ -148,20 +162,31 @@ const User = () => {
         </Detail>
         {user && posts && (
           <General>
-            <span>
+            <span
+              className={tab === "Content" ? "active" : ""}
+              onClick={() => handleTab("Content")}
+            >
               内容<strong>{posts?.length}</strong>
             </span>
-            <span>
+            <span
+              className={tab === "Fans" ? "active" : ""}
+              onClick={() => handleTab("Fans")}
+            >
               粉丝<strong>{user?.fanList.length}</strong>
             </span>
-            <span>
+            <span
+              className={tab === "Follows" ? "active" : ""}
+              onClick={() => handleTab("Follows")}
+            >
               关注<strong>{user?.followList.length}</strong>
             </span>
           </General>
         )}
       </UserInfo>
       <CenterContainer>
-        <Posts posts={posts} userInfo={user} />
+        {tab === "Content" ? <Posts posts={posts} userInfo={user} /> : null}
+        {tab === "Fans" ? <FanList></FanList> : null}
+        {tab === "Follows" ? <FollowList></FollowList> : null}
       </CenterContainer>
     </UserWrapper>
   );

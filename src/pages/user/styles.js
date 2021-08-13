@@ -95,8 +95,16 @@ export const General = styled.div`
   display: flex;
   justify-content: space-between;
   > span {
+    cursor: pointer;
     font-size: 15px;
     color: ${(props) => props.theme.appTextColor};
+    &.active {
+      color: ${(props) => props.theme.appThemeColor};
+      font-weight: 600;
+      strong {
+        color: ${(props) => props.theme.appThemeColor};
+      }
+    }
 
     & + span {
       margin-left: 20px;
@@ -110,3 +118,9 @@ export const General = styled.div`
 export const CenterContainer = styled.div`
   padding: 10px;
 `;
+
+
+export const FanList = styled.div`
+`;
+
+export const FollowList = styled.div``;

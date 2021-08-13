@@ -86,7 +86,7 @@ const Share = ({ shareRefresh, setShareRefresh }) => {
   return (
     <ShareWrapper>
       <ShareTop>
-        <Avatar src={userInfo.avatar || noAvatar} />
+        <Avatar src={PF + userInfo.avatar || noAvatar} />
         <Textarea
           placeholder="分享你的趣事"
           onChange={onEdit}

@@ -20,7 +20,6 @@ import {
   PostTopRight,
   PostCenter,
   PostText,
-  PostImg,
 } from "./styled";
 
 const PostInfo = () => {
@@ -40,10 +39,7 @@ const PostInfo = () => {
     }
     history.push("/other/" + user.username);
   };
-  const getUser = async () => {
-    // const res = await userApi.getUser(post.userId);
-    // setUser(res.data);
-  };
+ 
 
   const getPost = async () => {
     const res = await postApi.getPost(postId);
@@ -73,7 +69,9 @@ const PostInfo = () => {
         </PostTop>
         <PostCenter>
           <PostText>{post?.desc}</PostText>
-          {post?.photo && <Image width="100%" src={PF + post.photo} />}
+          {post?.photo && (
+            <Image className="postImg" width="100%" src={PF + post.photo} />
+          )}
         </PostCenter>
       </Container>
     </Wrapper>

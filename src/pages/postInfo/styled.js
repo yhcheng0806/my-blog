@@ -48,23 +48,21 @@ export const PostTopRight = styled.div``;
 
 export const PostCenter = styled.div`
   margin: 20px 0;
+  .postImg {
+    width: 100%;
+    /* max-height: 500px; */
+    height: min(350px, max(175px, 41vw));
+    background: ${(props) => props.theme.appBorderColor};
+    object-fit: cover;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 `;
 
 export const PostText = styled.div`
   letter-spacing: 1px;
   line-height: 1.3;
   margin-bottom: 10px;
-`;
-
-export const PostImg = styled.img`
-  margin-top: 10px;
-  width: 100%;
-  /* max-height: 500px; */
-  height: min(285px, max(175px, 41vw));
-  background: ${(props) => props.theme.appBorderColor};
-  object-fit: cover;
-
-  &:hover {
-    opacity: 0.7;
-  }
 `;
