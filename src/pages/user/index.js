@@ -184,7 +184,7 @@ const User = () => {
         )}
       </UserInfo>
       <CenterContainer>
-        {tab === "Content" ? <Posts posts={posts} userInfo={user} /> : null}
+        {tab === "Content" ? <Posts posts={posts} /> : null}
         {tab === "Fans" ? <FanList></FanList> : null}
         {tab === "Follows" ? <FollowList></FollowList> : null}
       </CenterContainer>

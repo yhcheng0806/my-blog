@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 
-const API = axios.create({ baseURL: "http://39.104.114.140:5000/api" });
+const API = axios.create({ baseURL: "/api" });
 
 API.interceptors.request.use((req) => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
