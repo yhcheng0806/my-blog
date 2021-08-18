@@ -2472,8 +2472,8 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
 
 antd-img-crop@^3.14.3:
   version "3.14.3"
-  resolved "https://registry.nlark.com/antd-img-crop/download/antd-img-crop-3.14.3.tgz#30bd04f664a0316fca8b278dda2a85e10e506c6a"
-  integrity sha1-ML0E9mSgMW/KiyeN2iqF4Q5QbGo=
+  resolved "https://registry.yarnpkg.com/antd-img-crop/-/antd-img-crop-3.14.3.tgz#30bd04f664a0316fca8b278dda2a85e10e506c6a"
+  integrity sha512-BZte+phXm30NfO0K908xzUF8YRgncBPDgEp4nI3PCkzhlbHzDa1Pzmi09JA/W5+f6Xz6IetK5gJ2FMZ8j3yY1w==
   dependencies:
     "@babel/runtime" "^7.14.6"
     react-easy-crop "^3.5.2"
