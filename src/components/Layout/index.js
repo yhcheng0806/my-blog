@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
+// import { HashRouter as Router } from "react-router-dom";
 
 import MenuBar from "../Menubar";
 import RightBar from "../RightBar";
